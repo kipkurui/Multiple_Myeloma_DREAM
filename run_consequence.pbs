@@ -1,0 +1,21 @@
+#!/bin/sh
+##PBS -o localhost:/mnt/lustre/users/ckibet/MM_DREAM/missense_log.txt
+
+##PBS -e localhost:/mnt/lustre/users/ckibet/MM_DREAM/missense_error.txt
+
+#PBS-P CBBI0922
+#PBS -l select=1:ncpus=24:mpiprocs=12:nodetype=haswell_reg
+#PBS -l walltime=96:00:00
+#PBS -q smp
+#PBS -m abe
+#PBS -M calebkibet88@gmail.com
+
+cd /mnt/lustre/users/ckibet/MM_DREAM
+
+#Load modules
+
+module load gcc/6.1.0 
+
+source activate dream_challenge
+
+python /mnt/lustre/users/ckibet/MM_DREAM/code/run_consequence_snps.py
